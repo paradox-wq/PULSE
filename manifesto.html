@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Our Manifesto - PULSE |TO BE ATHLETE OWN YOUR GAME</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #000;
+            font-family: 'JetBrains Mono', monospace;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('fondi.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            opacity: 0.9;
+            z-index: -1;
+        }
+        
+        .menu-haut-droit {
+            position: fixed;
+            top: 30px;
+            right: 50px;
+            display: flex;
+            gap: 30px;
+            z-index: 1000;
+        }
+        
+        .menu-haut-droit a {
+            color: #000;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 11px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid #000;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .menu-haut-droit a:hover {
+            opacity: 0.5;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 60px 80px;
+            gap: 100px;
+            align-items: flex-start;
+        }
+        
+        .left-section {
+            flex: 0 0 45%;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .right-section {
+            flex: 1;
+            padding-top: 80px;
+        }
+        
+        h1 {
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 0.85;
+            margin: 0 0 80px 0;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+        }
+        
+        .visual-element {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto auto;
+            gap: 12px;
+            max-width: 520px;
+        }
+        
+        .box {
+            background: #000;
+            color: #fff;
+            padding: 30px 20px;
+            font-size: 28px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease;
+        }
+        
+        .box:hover {
+            transform: scale(1.02);
+        }
+        
+        .box.large {
+            grid-column: span 2;
+            font-size: 100px;
+            padding: 70px 20px;
+            letter-spacing: -4px;
+        }
+        
+        .box.vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 52px;
+            letter-spacing: -2px;
+        }
+        
+        .image-box {
+            background: black;
+            
+            min-height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+                background-image: url('4eme.jpg');
+    background-size: cover;
+    background-position: center;
+                
+        }
+        
+        .image-box::after {
+            content: 'PULSE';
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: rgba(255,255,255,0.8);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        p {
+            font-size: 13px;
+            line-height: 2.2;
+            margin: 0 0 35px 0;
+            letter-spacing: 0.3px;
+            font-weight: 400;
+        }
+        
+        .intro {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+        
+        .tagline {
+            font-weight: 700;
+            margin-top: 60px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        
+        .signature-container {
+            margin-top: 100px;
+            padding-bottom: 40px;
+            border-bottom: 4px solid #000;
+        }
+        
+        .signature-image {
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin-bottom: -50px;
+            transform: rotate(-16deg);
+            
+        
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                gap: 60px;
+                padding: 80px 40px;
+            }
+            
+            .left-section {
+                position: static;
+                flex: none;
+                width: 100%;
+            }
+            
+            .right-section {
+                padding-top: 0;
+            }
+            
+            h1 {
+                font-size: 64px;
+                margin-bottom: 60px;
+            }
+            
+            .visual-element {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-haut-droit {
+                right: 20px;
+                top: 20px;
+                gap: 20px;
+            }
+            
+            .menu-haut-droit a {
+                font-size: 10px;
+            }
+            
+            .container {
+                padding: 60px 25px;
+            }
+            
+            h1 {
+                font-size: 48px;
+            }
+            
+            .box {
+                font-size: 22px;
+                padding: 25px 15px;
+            }
+            
+            .box.large {
+                font-size: 72px;
+                padding: 50px 15px;
+            }
+            
+            .box.vertical {
+                font-size: 40px;
+            }
+            
+            p {
+                font-size: 12px;
+                line-height: 2;
+            }
+            
+            .signature-image {
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu-haut-droit">
+        <a href="Mon image.htm">HOME</a>
+        <a href="ventures.html">VENTURES</a>
+        <a href="storefront.html">STOREFRONT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+    
+    <div class="container">
+        <div class="left-section">
+            <h1>OUR<br>MANIFESTO</h1>
+            <div class="visual-element">
+                <div class="box">PULSE</div>
+                <div class="box">ATHLETES</div>
+                <div class="box large">FIRST</div>
+                <div class="box vertical">GAME</div>
+                <div class="image-box" style="background-image: url('4eme.jpg'); background-size: cover; background-position: center;"></div>
+            </div>
+        </div>
+        
+        <div class="right-section">
+            <p class="intro">OWN YOUR GAME</p>
+            
+            <p>WE LIVE IN A WORLD WHERE ATHLETES ARE TREATED LIKE ASSETS.<br>
+            WHERE "IT'S A BUSINESS" HAS BECOME THE MODERN CATCHPHRASE FOR<br>
+            "YOU GOT SCREWED."<br>
+            AND THE HUMAN BEHIND THE TALENT IS DISREGARDED BY THE PEOPLE<br>
+            WHO REPRESENT THEM.</p>
+            
+            <p>WE'VE BEEN THERE. BAD ADVICE. GOOD ADVICE. NO ADVICE.<br>
+            WE KNOW FIRSTHAND THAT YOUR CAREER IS MORE THAN YOUR<br>
+            CONTRACT.<br>
+            BECAUSE WE WERE PLAYERS, AND WE'VE SEEN GAME.</p>
+            
+            <p>WE'VE BEEN THE COLLEGE STANDOUT,<br>
+            THE ROOKIE WITH STARS IN OUR EYES,<br>
+            THE VETERAN WONDERING WHAT'S NEXT,<br>
+            AND THE PLAYER TRANSITIONING TO THE UNKNOWN OF POST PLAYING<br>
+            LIFE.</p>
+            
+            <p>THAT'S WHY PULSE IS MORE THAN AN AGENCY.</p>
+            
+            <p>WE'RE THE ONES WHO STAND BY THE ATHLETE, NOT THE STAT SHEET.<br>
+            WE BELIEVE IN THE PERSON BEHIND THE JERSEY, THE LIFE BEHIND<br>
+            THE HIGHLIGHT REEL,<br>
+            AND THE DREAMS BEYOND THE FINAL WHISTLE.<br>
+            WE'RE NOT HERE TO BROKER DEALS. WE'RE HERE TO BUILD LEGACIES.</p>
+            
+            <p>THE SYSTEM LIKES TO TELL WHAT YOU'RE WORTH.<br>
+            BUT WE'RE HERE TO REMIND YOU THAT YOUR VALUE ISN'T JUST THE<br>
+            DOLLARS YOU MAKE.<br>
+            IT'S THE LIFE YOU BUILD.</p>
+            
+            <p class="tagline">FOR PLAYERS, BY PLAYERS.</p>
+            
+            <div class="signature-container">
+                <img src="signature.png" alt="PULSE Signature" class="signature-image">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

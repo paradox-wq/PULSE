@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULSE - Contact |TO BE ATHLETE OWN YOUR GAME</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000000;
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            min-height: 100vh;
+        }
+        
+        /* Header */
+        .header {
+            padding: 30px 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .header-left {
+            font-size: 11px;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid white;
+            padding-bottom: 2px;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+        
+        /* Main Content */
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            padding: 0 100px;
+            margin-top: 50px;
+            min-height: calc(100vh - 300px);
+            padding-bottom: 150px;
+        }
+        
+        /* Left Side */
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .freegame-title {
+            font-size: 190px;
+            font-weight: 1000;
+            line-height: 0.9;
+            letter-spacing: -5px;
+            margin-bottom: 80px;
+        }
+        
+        .reach-out-section h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+        
+        .reach-out-section p {
+            font-size: 12px;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            max-width: 400px;
+        }
+        
+        /* Right Side - Form */
+        .form-section {
+            padding-top: 60px;
+        }
+        
+        .form-header {
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            color: #999;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 50px;
+        }
+        
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+        
+        .radio-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .form-group {
+            margin-bottom: 35px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+        
+        input, textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
+            color: white;
+            padding: 15px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-bottom-color: white;
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: white;
+            color: black;
+            border: none;
+            padding: 25px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 30px;
+        }
+        
+        .submit-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Footer */
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 100px;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: black;
+        }
+        
+        .footer-left {
+            font-size: 11px;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            font-size: 11px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid white;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.6;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+        
+        .social-icons a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .social-icons a:hover {
+            opacity: 0.6;
+        }
+        
+        #formStatus {
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            font-weight: bold;
+        }
+        
+        #formStatus.success {
+            background: #00ff00;
+            color: black;
+            display: block;
+        }
+        
+        #formStatus.error {
+            background: #ff0000;
+            color: white;
+            display: block;
+        }
+        
+        /* Why Fill Section */
+        .why-fill-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            border-left: 4px solid #ffffff;
+        }
+        
+        .why-fill-title {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        
+        .why-fill-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .why-fill-list li {
+            font-size: 11px;
+            line-height: 2;
+            letter-spacing: 0.5px;
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 10px;
+            color: #cccccc;
+        }
+        
+        .why-fill-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #ffffff;
+            font-weight: bold;
+        }
+            
+        .why-content {
+            display: none;
+        }
+        
+        .why-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            MANAGEMENT FOR<br>
+            ATHLETES, BY ATHLETES ◆
+        </div>
+        <div class="footer-links">
+    <a href="manifesto.html">OUR MANIFESTO</a>
+    <a href="ventures.html">VENTURES</a>
+    <a href="storefront.html">STOREFRONT</a>
+    <a href="Mon image.htm">HOME</a>
+</div>
+    </div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
+            <a href="Mon image.htm" style="text-decoration: none; color: white; cursor: pointer;">
+    <div class="freegame-title">PULSE</div>
+</a>
+            
+            <div class="reach-out-section">
+                <h2>REACH OUT</h2>
+                <p>
+                    WHETHER YOU'RE AN ATHLETE, PARENT OF,<br>
+                    OR POTENTIAL PARTNER - SEE WHAT IT'S<br>
+                    LIKE TO HAVE US ON YOUR TEAM.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Right Section - Form -->
+        <div class="form-section">
+            <div class="form-header">I AM:</div>
+            
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="type" value="athlete" checked>
+                    <span>AN ATHLETE</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="type" value="parent">
+                    <span>A PARENT OF AN ATHLETE</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="type" value="partner">
+                    <span>A PARTNER</span>
+                </label>
+            </div>
+            
+            <!-- Why Fill Section -->
+            <div class="why-fill-section">
+                <div class="why-fill-title">WHY REACH OUT?</div>
+                
+                <div id="whyAthlete" class="why-content active">
+                    <ul class="why-fill-list">
+                        <li>OBTENIR UN MANAGER SPORTIF PROFESSIONNEL</li>
+                        <li>AIDE POUR LES CONTRATS ET NÉGOCIATIONS</li>
+                        <li>DÉVELOPPER VOTRE CARRIÈRE SPORTIVE</li>
+                        <li>CONSEILS SUR LES TRANSFERTS, NIL, PORTAILS</li>
+                        <li>PLANIFICATION DE CARRIÈRE APRÈS LE SPORT</li>
+                    </ul>
+                </div>
+                
+                <div id="whyParent" class="why-content">
+                    <ul class="why-fill-list">
+                        <li>AIDER VOTRE ENFANT ATHLÈTE À RÉUSSIR</li>
+                        <li>COMPRENDRE LE SYSTÈME SPORTIF COMPLEXE</li>
+                        <li>PROTÉGER LES INTÉRÊTS DE VOTRE ENFANT</li>
+                        <li>OPTIMISER LES OPPORTUNITÉS FINANCIÈRES</li>
+                        <li>GUIDANCE PROFESSIONNELLE POUR SON AVENIR</li>
+                    </ul>
+                </div>
+                
+                <div id="whyPartner" class="why-content">
+                    <ul class="why-fill-list">
+                        <li>COLLABORATION COMMERCIALE AVEC PULSE</li>
+                        <li>OPPORTUNITÉS DE SPONSORING</li>
+                        <li>ACCÈS À DES ATHLÈTES PROMETTEURS</li>
+                        <li>PARTENARIATS STRATÉGIQUES</li>
+                        <li>DÉVELOPPER VOTRE MARQUE DANS LE SPORT</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <form id="contactForm">
+                <div class="form-row">
+                    <input type="text" name="firstName" placeholder="FIRST NAME" required>
+                    <input type="text" name="lastName" placeholder="LAST NAME" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="EMAIL" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="PHONE NUMBER" required>
+                </div>
+                
+                <div class="form-group">
+                    <textarea name="message" placeholder="MESSAGE" required></textarea>
+                </div>
+                
+                <input type="hidden" name="userType" id="userTypeHidden" value="athlete">
+                
+                <button type="submit" class="submit-btn">SUBMIT</button>
+                <div id="formStatus"></div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-left">
+            MANAGEMENT FOR<br>
+            ATHLETES, BY ATHLETES ◆
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 50px;">
+            <div class="footer-links">
+                <a href="#manifesto">OUR MANIFESTO</a>
+                <a href="#ventures">VENTURES</a>
+                <a href="#storefront">STOREFRONT</a>
+                <a href="#contact">CONTACT</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/miguel-t-mbenoun-751535314/?originalSubdomain=fr" target="_blank" title="LinkedIn">
+                    <img src="linkedin.png" alt="LinkedIn" style="width: 20px; height: 20px;">
+                </a>
+                <a href="mailto:mmiguelthierry@gmail.com" title="Email">
+                    <img src="email.png" alt="Email" style="width: 20px; height: 20px;">
+                </a>
+                <a href="https://www.twitch.tv/mngx_21" target="_blank" title="Twitch">
+                    <img src="twitch.png" alt="Twitch" style="width: 20px; height: 20px;">
+                </a>
+            </div>
+    </div>
+    
+    <script>
+        // Changer le contenu "WHY REACH OUT?" selon le type d'utilisateur
+        document.querySelectorAll('input[name="type"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Mettre à jour le champ caché
+                document.getElementById('userTypeHidden').value = this.value;
+                
+                // Cacher tous les contenus
+                document.querySelectorAll('.why-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Afficher le bon contenu
+                if (this.value === 'athlete') {
+                    document.getElementById('whyAthlete').classList.add('active');
+                } else if (this.value === 'parent') {
+                    document.getElementById('whyParent').classList.add('active');
+                } else if (this.value === 'partner') {
+                    document.getElementById('whyPartner').classList.add('active');
+                }
+            });
+        });
+        
+        // Gestion de la soumission du formulaire
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const statusDiv = document.getElementById('formStatus');
+            const submitBtn = this.querySelector('.submit-btn');
+            
+            // Désactiver le bouton pendant l'envoi
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'ENVOI EN COURS...';
+            
+            try {
+                const response = await fetch('https://formspree.io/f/xldopkag', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    statusDiv.className = 'success';
+                    statusDiv.textContent = '✓ MESSAGE ENVOYÉ AVEC SUCCÈS !';
+                    this.reset();
+                    // Réinitialiser le champ caché
+                    document.getElementById('userTypeHidden').value = 'athlete';
+                    document.querySelector('input[name="type"][value="athlete"]').checked = true;
+                } else {
+                    throw new Error('Erreur lors de l\'envoi');
+                }
+            } catch (error) {
+                statusDiv.className = 'error';
+                statusDiv.textContent = '✗ ERREUR LORS DE L\'ENVOI. VEUILLEZ RÉESSAYER.';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'SUBMIT';
+                
+                // Cacher le message après 5 secondes
+                setTimeout(() => {
+                    statusDiv.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+</html>

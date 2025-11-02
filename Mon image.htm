@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>PULSE |TO BE ATHLETE OWN YOUR GAME</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body{
+            margin: 0%;
+            padding: 0;
+            background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(255, 255, 255));
+            min-height: 100vh;
+            position: relative;
+            height: 900vh; 
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('canvas.png');
+            background-size: cover;
+            background-position: 28% center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        
+        .titre-fond {
+            position: fixed;
+            top: 31.2%;
+            left: 49.8%;
+            transform: translate(-50%, -50%);
+            font-size: 26vw;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.9);
+            margin: 0;
+            z-index: 0;
+            font-family: Arial Black, sans-serif; 
+            letter-spacing: -10px;
+        }
+        
+        .texte-haut-gauche {
+            position: fixed;
+            top: 31px;
+            left: 107px;
+            font-family: 'JetBrains Mono', monospace;   
+            font-weight: bold;
+            font-size: 13px;
+            color: black;
+            margin: 0;
+            z-index: 3;
+            text-align: left;
+            max-width: 400px;
+        } 
+        
+        .carre-clignote {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            margin-left: 3px;
+            animation: clignotement 1s infinite;
+        }
+
+        @keyframes clignotement {
+            0%, 49% {
+                background-color: white;
+            }
+            50%, 100% {
+                background-color: black;
+            }
+        }
+        
+        .menu-haut-droit {
+            position: fixed;
+            top: 30px;
+            right: 105px;
+            display: flex;
+            gap: 30px;
+            z-index: 3;
+        }
+
+        .menu-haut-droit a {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+            font-size: 14px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid rgb(0, 0, 0);
+            transition: all 0.3s;
+        }
+
+        .menu-haut-droit a:hover {
+            color: gray;
+            border-bottom-color: gray;
+        }
+        
+        .section-guidance {
+            position: fixed;
+            bottom: 0;
+            left: 2%;
+            right: 0%;
+            background: transparent;
+            padding: 40px 50px;
+            z-index: 20;
+            padding-bottom: 50px;
+        }
+
+        .titre-own {
+            color: black;
+            font-size: 40px;
+            margin: 0 0 20px 0;
+            font-weight: bold;
+            
+        }
+
+        .game-cursive {
+            font-style: italic;
+            font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+            font-weight: normal;
+            font-size: 300%;
+        }
+
+        .contenu-guidance {
+    display: block;  
+}
+
+        .texte-guidance {
+            color: black;
+            font-size: 14px;
+            max-width: 500px;
+            margin: 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+        }
+
+
+.legends-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 270px;
+    overflow: hidden;
+}
+
+.legend-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px dashed #28292a;
+    padding: 2px 10px;
+    background: #ffffff;
+    gap: 20px;
+    min-width: 280px;
+    position: absolute;
+    right: 0;
+}
+
+.legend-box.position-1 { top: 0; }
+.legend-box.position-2 { top: 90px; }
+.legend-box.position-3 { top: 180px; }
+
+.legend-box.visible {
+    animation: slideIn 0.6s ease-out forwards;
+}
+
+.legend-box.hidden {
+    animation: slideOut 0.6s ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.legend-box img {
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    order: 2;
+    flex-shrink: 0;
+    border-radius: 12px;  
+    border: 1px solid #D0D0D0;
+}
+
+.legend-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: bold;
+    color: #000000;
+    letter-spacing: 2px;
+    order: 1;
+    flex: 1;
+}
+.legends-wrapper {
+    position: fixed;
+    right: 30px; 
+    bottom: 30px; 
+    z-index: 20;
+}
+
+.legends-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+        .rectangle-monte {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0vh; 
+            background: black;
+            z-index: 15;
+            transition: height 0.001s linear;
+            overflow: hidden;
+        }
+        
+        .texte-souris {
+            position: fixed;
+            color: rgb(0, 0, 0);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .texte-souris.visible {
+            opacity: 1;
+        }
+        
+        .deuxieme-page {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 100% 0 50px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ligne-verticale {
+            width: 3px;
+            height: 30px;
+            background: white;
+            margin-bottom: 20px;
+        }
+
+        .contenu-centre {
+            text-align: center;
+            margin-top: 400px;
+        }
+
+        .titre-management {
+    color: white;
+    font-family: Arial , sans-serif;
+    font-size: 45px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 236px;
+}
+
+        .bloc-texte {
+            margin-bottom: 200px;
+            margin-top: 12px;
+            font-size: 20px;
+        }
+
+        
+.texte-blanc {
+    color: white;
+    font-family: 'JetBrains Mono', monospace; /* CHANGÉ */
+    font-size: 25px;
+    font-weight: 400; /* CHANGÉ */
+    margin: 5px 0;
+    letter-spacing: 0.5px; /* AJUSTÉ */
+    margin-top: 10px;
+}
+
+        .encadre {
+    border: 2px solid white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace; /* AJOUTÉ */
+}
+
+        .bloc-texte-bas {
+            margin-top: 100px;
+            margin-bottom: 90px;
+        }
+       .images-sports {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.rectangle-jaune {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0vh;
+    background: rgb(0, 0, 0);
+    z-index: 17;
+    transition: height 0.001s linear, background-color 0.5s ease;
+    overflow: hidden;
+}
+
+
+.texte-noir {
+    color: black;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 5px 0;
+    letter-spacing: 1px;
+}
+
+.ligne-verticale-noir {
+    width: 3px;
+    height: 30px;
+    background: black;
+    margin-bottom: 20px;
+}
+
+.titre-noir {
+    color: black;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 80px;
+}
+
+.encadre-noir {
+    border: 2px solid black;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+.quatrieme-page {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    padding: 100px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200vh;
+    z-index: 20;
+}
+
+.ligne-verticale-bleu {
+    width: 3px;
+    height: 30px;
+    background: #000000;
+    margin-bottom: 20px;
+}
+
+.titre-bleu {
+    color: #000000;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 80px;
+}
+
+.texte-bleu {
+    color: #8B9DAF;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 5px 0;
+    letter-spacing: 1px;
+}
+
+.rectangle-bleu {
+    position: fixed;
+    bottom: 0;
+    left: 0  ;
+    width: 100%;
+    height: 0vh;
+    background: #000000;
+    z-index: 18;
+    transition: height 0.001s linear;
+}
+
+.rectangle-gris {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0vh;
+    background: #000000;
+    z-index: 19;
+    transition: height 0.005s linear;
+}
+
+
+.image-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    pointer-events: auto;
+    z-index: 25;
+    cursor: pointer;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+.image-label {
+    color: rgb(255, 255, 255);
+    font-family: Arial, sans-serif;
+    font-size: 45px;
+    font-weight: bolder;
+    margin-top: 15px;
+    letter-spacing: 3px;
+}
+
+.container-nba {
+    left: 3%;
+    top: 100%;
+    transform: translateY(-50%);
+    width: 300px;
+}
+
+.container-nfl {
+    right: 5%;
+    top: 135%;
+    width: 400px;
+}
+
+.container-f1 {
+    right: 5%;
+    bottom: 20%;
+    width: 400px;
+}
+
+.container-chap {
+    left: 5%;
+    bottom: -150%;
+    width: 300px;
+}
+.image-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    pointer-events: auto;
+    z-index: 25;
+    cursor: pointer;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    transition: all 0.4s ease;
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+.image-container:hover .image-overlay {
+    opacity: 1;
+}
+
+.view-project-btn {
+    background: #FFD700;
+    color: black;
+    padding: 12px 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover .view-project-btn {
+    transform: scale(1.05);
+}
+.quatrieme-page {
+    position: absolute;
+    bottom: -150vh; 
+    width: 100%;
+    background: black;
+    color: white;
+    margin-top: 300vh; 
+    z-index: 20;
+    padding-bottom: 100px;
+}
+
+/* Header Principles */
+.principles-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 100px;
+    border-bottom: 1px solid #333; /* GRIS FONCÉ */
+}
+
+.principles-logo {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'JetBrains Mono', monospace;
+    color: white; /* BLANC */
+}
+
+.principles-title {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    color: white; /* BLANC */
+}
+
+.principles-dot {
+    width: 8px;
+    height: 8px;
+    background: white; /* BLANC */
+}
+
+/* Principles Container */
+.principles-container {
+    padding: 0 100px;
+}
+
+.principle-item {
+    border-bottom: 1px solid #333; /* GRIS FONCÉ */
+    padding: 80px 0;
+    display: grid;
+    grid-template-columns: 300px 1fr 80px;
+    gap: 60px;
+    align-items: start;
+    transition: all 0.3s ease;
+}
+
+.principle-item:hover {
+    background: rgba(255, 255, 255, 0.05); /* LÉGER BLANC */
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.principle-title-text {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    color: white; /* BLANC */
+}
+
+.principle-description {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #ccc; /* GRIS CLAIR */
+    letter-spacing: 0.5px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.principle-number {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666; /* GRIS */
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* CTA Section */
+.cta-section {
+    margin: 100px 100px;
+    background: white; /* BLANC */
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 1600px;
+}
+
+.cta-section:hover {
+    transform: scale(1.01);
+    background: #FFD700; /* JAUNE AU HOVER */
+}
+
+.cta-content {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    font-size: 24px;
+    color: black; /* NOIR */
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.arrow {
+    font-size: 40px;
+    transition: transform 0.3s ease;
+}
+
+.cta-section:hover .arrow {
+    transform: translateX(10px);
+}
+
+/* Process Section */
+.process-section {
+    background: white; /* FOND BLANC */
+    color: black; /* ÉCRITURE NOIRE */
+    padding: 100px;
+}
+/* CINQUIÈME PAGE - QUIZ */
+.cinquieme-page {
+    position: absolute;
+    bottom: -250vh; 
+    width: 100%;
+    background: #000000;
+    padding: 100px 0;
+    margin-top: 400vh;
+    z-index: 21;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-intro {
+    text-align: center;
+    padding: 60px 100px;
+    margin-bottom: 40px;
+}
+
+.quiz-intro-title {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: rgb(255, 255, 255);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.quiz-intro-subtitle {
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+    margin-bottom: 50px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.start-quiz-btn {
+    background: rgb(255, 204, 64);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 20px 60px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+    border-radius: 5px;
+}
+
+.start-quiz-btn:hover {
+    background: #333;
+    transform: scale(1.05);
+}
+
+.quiz-wrapper {
+    display: none;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.quiz-wrapper.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+/* STYLES DU QUIZ (copié du document 3) */
+.quiz-container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+.quiz-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.quiz-title {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.quiz-subtitle {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: black;
+}
+
+.quiz-progress {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    background: #ddd;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+    background: black;
+    transform: scale(1.3);
+}
+
+.progress-dot.completed {
+    background: white;
+    border: 2px solid black;
+}
+
+.question-container {
+    background: white;
+    padding: 60px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.question-number {
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.question-text {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: black;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.option-btn {
+    background: #f5f5f5;
+    border: 3px solid transparent;
+    padding: 30px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    border-radius: 10px;
+    color: black;
+}
+
+.option-btn:hover {
+    background: #FFD700;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.option-btn.selected {
+    border-color: black;
+    background: #FFD700;
+}
+
+.quiz-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-btn {
+    background: black;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: #333;
+    transform: scale(1.05);
+}
+
+.nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.result-container {
+    background: transparent;  
+    padding: 80px;
+    border-radius: 20px;
+    text-align: center;
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.result-container.show {
+    display: block;
+}
+
+.result-sport {
+    font-size: 72px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    color: black;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.result-description {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    color: #fffefe;
+}
+
+.restart-btn {
+    background: black;
+    color: white;
+    border: none;
+    padding: 20px 50px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 2px;
+    border-radius: 5px;
+}
+
+.restart-btn:hover {
+    background: #333;
+    transform: scale(1.05);
+}
+
+.sport-emoji {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 100px;
+    margin-bottom: 100px;
+}
+
+.process-title {
+    font-size: 64px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    color: black; /* NOIR */
+}
+
+.process-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.process-text {
+    font-size: 13px;
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+    font-family: 'JetBrains Mono', monospace;
+    color: #333; /* GRIS FONCÉ */
+}
+
+.process-hashtag {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    color: black; /* NOIR */
+}
+
+.divider {
+    height: 1px;
+    background: #ddd; /* GRIS CLAIR */
+    margin: 60px 0;
+}
+/* SECTION CLUBS */
+.clubs-section {
+    background: transparent;  
+    padding: 40px;
+    border-radius: 15px;
+    margin: 40px 0;
+    border: 3px solid transparent;  
+    animation: slideUp 0.6s ease 0.3s backwards;
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.clubs-title {
+    font-size: 28px;
+    font-weight: 900;
+    color: rgb(255, 255, 255);  /* ← CHANGE EN BLANC */
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.clubs-description {
+    font-size: 16px;
+    color: rgb(255, 255, 255);  /* ← CHANGE EN BLANC */
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.clubs-btn {
+    display: inline-block;
+    background: rgb(0, 0, 0);  /* ← FOND BLANC */
+    color: rgb(255, 255, 255);  /* ← TEXTE NOIR */
+    padding: 18px 40px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;  
+}
+
+.clubs-btn:hover {
+    background: #FFA500;
+    color: black;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.result-video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.4; /* Pour que le texte reste lisible */
+}
+
+.result-container {
+    background: transparent; /* Garder transparent */
+    padding: 80px;
+    border-radius: 20px;
+    text-align: center;
+    display: none;
+    animation: fadeIn 0.5s ease;
+    position: relative;
+    z-index: 1;
+}
+.arrow-back-btn {
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    width: 60px;
+    height: 60px;
+    background: rgb(255, 255, 255);  
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.arrow-back-btn:hover {
+    background: #FFD700;
+    transform: scale(1.1);
+}
+
+.arrow-back-btn::before {
+    content: '↩';  
+    font-size: 28px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+.arrow-back-btn:hover::before {
+    color: black;
+}
+
+.arrow-back-btn.show {
+    display: flex;
+}
+.footer-text {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    z-index: 22;
+}
+
+.footer-line1 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.footer-line2 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+
+.footer-line3 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin: 5px 0;
+}
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    flex-direction: column;
+}
+
+.loading-screen.show {
+    display: flex;
+}
+
+.loading-text {
+    font-size: 48px;
+    font-weight: 900;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 3px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loading-dots {
+    font-size: 48px;
+    color: #FFD700;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+    </style>
+</head>
+<body>
+    <div class="loading-screen" id="loadingScreen">
+    <div class="loading-text">LOADING YOUR FUTURE<span class="loading-dots">...</span></div>
+</div>
+    <button class="arrow-back-btn" id="arrowBackBtn" onclick="scrollToTop()"></button>
+    
+    <h1 class="titre-fond">PULSE</h1>
+    <p class="texte-haut-gauche">DECOUVRE L'ATHLETE QUI EST EN TOI<br> EN DEVENANT, ATHLETE<span class="carre-clignote"></span></p>
+    
+    <nav class="menu-haut-droit">
+    <a href="manifesto.html">OUR MANIFESTO</a>
+    <a href="ventures.html">VENTURES</a>
+    <a href="storefront.html">STOREFRONT</a>
+    <a href="contact.html">CONTACT</a>
+</nav>
+    
+   
+
+<div class="section-guidance">
+    <h2 class="titre-own">OWN YOUR <span class="game-cursive">Game</span></h2>
+    <p class="texte-guidance">GET THE GUIDANCE YOU NEED TO TAKE CHARGE OF HOW YOUR GAME UNFOLDS — FROM THOSE WHO KNOW IT BEST AND DISCOVER THE ATHLETE THAT IS FOUND IN YOU.</p>
+</div>
+
+
+<div class="legends-wrapper">
+    <div class="legends-container">
+        <div class="legend-box">
+            <img src="jordan.jpeg" alt="Michael Jordan">
+            <span class="legend-name">JORDAN M.<br>SIGNED UP 13 MINS AGO</span>
+        </div>
+        <div class="legend-box">
+            <img src="ronaldo.jpeg" alt="Cristiano Ronaldo">
+            <span class="legend-name">RONALDO C.<br>SIGNED UP 11 MINS AGO</span>
+        </div>
+        <div class="legend-box">
+            <img src="hamilton.jpeg" alt="Lewis Hamilton">
+            <span class="legend-name">HAMILTON L.<br>SIGNED UP 2 MINS AGO</span>
+        </div>
+        <div class="legend-box">
+            <img src="bolt.jpg" alt="Usain Bolt">
+            <span class="legend-name">BOLT U.<br>SIGNED UP 8 MINS AGO</span>
+        </div>
+        <div class="legend-box">
+            <img src="williams.jpg" alt="Serena Williams">
+            <span class="legend-name">WILLIAMS S.<br>SIGNED UP 5 MINS AGO</span>
+        </div>
+        <div class="legend-box">
+            <img src="curry.jpg" alt="Stephen Curry">
+            <span class="legend-name">CURRY S.<br>SIGNED UP 15 MINS AGO</span>
+        </div>
+        <div class="legend-box">
+            <img src="woods.jpg" alt="Tiger Woods">
+            <span class="legend-name">WOODS T.<br>SIGNED UP 9 MINS AGO</span>
+        </div>
+    </div>
+</div>
+</div></div>
+        </div>
+    </div>
+</div>
+    
+<div class="rectangle-monte">
+<div class="images-sports">
+    <div class="image-container container-nba">
+        <img src="NBA logo.jpg" alt="NBA">
+        <span class="image-label">NBA</span>
+    </div>
+    
+    <div class="image-container container-nfl">
+        <img src="NFL.jpeg" alt="NFL">
+        <span class="image-label">NFL</span>
+    </div>
+    
+    <div class="image-container container-f1">
+        <img src="f1.2.png" alt="F1">
+        <span class="image-label">FORMULA 1</span>
+    </div>
+    
+    <div class="image-container container-chap">
+        <img src="chap.jpeg" alt="CHAP">
+        <span class="image-label">CHAMPIONS LEAGUE</span>
+    </div>
+</div>
+    <div class="deuxieme-page">
+            <div class="ligne-verticale"></div>
+            <div class="contenu-centre">
+                <h2 class="titre-management">DÉCOUVRE L'UNIVERS DES PLUS <br> LIGUES SPORTIVES AVEC PULSE</h2>
+                
+                <div class="bloc-texte">
+    <p class="texte-blanc">NBA, Formule 1, NFL, Champions League...<br>
+Découvre les ligues qui font vibrer la planète !<br>
+Quelle compétition fera battre ton cœur ?</p>
+</div>
+                
+                <div class="bloc-texte-bas">
+    <p class="texte-blanc">Des athlètes extraordinaires,<br>des équipes légendaires,</p>
+    <p class="texte-blanc">des millions de fans. <span class="encadre">ET TOI ?</span></p>
+    <p class="texte-blanc">Peut-être que demain, c'est toi qui brilleras !</p>
+</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="texte-souris"></div>
+    <div class="troisieme-page">
+        <div class="ligne-verticale-noir"></div>
+        <div class="contenu-centre">
+         
+            <div class="bloc-texte">
+        
+            </div>
+        </div>
+    </div>
+<div class="quatrieme-page">
+    <!-- Header -->
+    <div class="principles-header">
+        <div class="principles-logo">PULSE</div>
+        <div class="principles-title">PRINCIPLES</div>
+        <div class="principles-dot"></div>
+    </div>
+
+
+    
+    <!-- Principles -->
+    <div class="principles-container">
+        <div class="principle-item">
+            <div class="principle-title-text">ON YOUR TEAM</div>
+            <div class="principle-description">
+                OUR ATHLETE MANAGERS ARE JUST THAT: ATHLETES AND MANAGERS.<br><br>
+                WE'VE WALKED (AND RUN AND JUMPED) IN YOUR SHOES AND NOW BRING OUR DEEP EXPERTISE TO HELP YOU WIN ON AND OFF THE PLAYING FIELD.
+            </div>
+            <div class="principle-number">001</div>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title-text">PLAN YOUR PLAY</div>
+            <div class="principle-description">
+                FROM NIL TO TRANSFER PORTALS TO CONTRACTS AND BEYOND, WE UNRAVEL THE CONFUSION OF THE EVER-EVOLVING INDUSTRY TO BETTER GUIDE YOU ON YOUR WAY.
+            </div>
+            <div class="principle-number">002</div>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title-text">SCORE, DON'T SETTLE</div>
+            <div class="principle-description">
+                OUR ANALYTICAL TOOLS AND DATA-DRIVEN DECISION MAKING HELPS YOU CHOOSE YOUR BEST NEXT MOVE.
+            </div>
+            <div class="principle-number">003</div>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title-text">LIFE BEYOND THE LIGHTS</div>
+            <div class="principle-description">
+                OUR DEDICATION DOESN'T STOP WHEN YOUR PLAYTIME DOES.
+            </div>
+            <div class="principle-number">004</div>
+        </div>
+        
+        <div class="principle-item">
+            <div class="principle-title-text">OWN YOUR GAME</div>
+            <div class="principle-description">
+                SHAPE YOUR TEAM NOW AND INTO THE FUTURE. AS AN ATHLETE, YOU HAVE THE OPPORTUNITY TO EARN EQUITY IN PULSE.
+            </div>
+            <div class="principle-number">005</div>
+        </div>
+    </div>
+    
+    <!-- CTA -->
+<a href="contact.html" style="text-decoration: none;">
+    <div class="cta-section">
+        <div class="cta-content">
+            <span>REACH OUT</span>
+            <span class="arrow">→</span>
+        </div>
+    </div>
+</a>
+    
+    <!-- Process Section -->
+    <div class="process-section">
+        <div class="process-grid">
+            <div class="process-title">
+                PULSE<br>
+                PROCESS
+            </div>
+            <div class="process-content">
+                <p class="process-text">
+                    THE PULSE PROCESS EMPOWERS THE ATHLETE AND THEIR FAMILY TO TAKE CONTROL OF THEIR DECISION-MAKING PROCESS. YOU DON'T ALWAYS GET TO CONTROL WHO DOES AND DOES NOT HAVE INTEREST IN YOU, BUT YOU CAN DETERMINE WHERE AND WHAT IS THE BEST FIT FOR YOU.
+                </p>
+                <p class="process-text">
+                    OUR LIVED EXPERIENCE HAS BIRTHED A SYSTEM THAT TEACHES YOU HOW TO EFFECTIVELY LEVERAGE THE THINGS YOU HAVE AUTONOMY OVER TO MAKE BETTER CAREER DECISIONS THAT WILL LEAVE YOU FEELING LIKE YOU ARE THE CEO OF YOUR JOURNEY AND CAREER RATHER THAN THE BITTER TASTE OF REGRETS FROM DECISIONS NOT PROPERLY EVALUATED.
+                </p>
+                <p class="process-hashtag">#OWNYOURGAME</p>
+            </div>
+        </div>
+        
+        <div class="divider"></div>
+    </div>
+</div>
+<div class="rectangle-gris"></div>
+<!-- CINQUIÈME PAGE - QUIZ -->
+<div class="cinquieme-page">
+     <video id="resultVideo" class="result-video-background" autoplay loop muted playsinline style="display: none;"></video>
+    <div class="quiz-intro" id="quizIntro">
+        <div class="quiz-intro-title">TROUVE TON SPORT</div>
+        <div class="quiz-intro-subtitle">
+            RÉPONDS À 5 QUESTIONS POUR DÉCOUVRIR<br>
+            LE SPORT QUI TE CORRESPOND LE MIEUX
+        </div>
+        <button class="start-quiz-btn" onclick="startQuiz()">COMMENCER LE QUIZ →</button>
+    </div>
+
+    <div class="quiz-wrapper" id="quizWrapper">
+        <div class="quiz-container">
+            <div class="quiz-progress" id="quizProgress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+            </div>
+
+            <div class="question-container" id="questionContainer">
+                <!-- Questions will be inserted here -->
+            </div>
+
+            <div class="quiz-nav">
+                <button class="nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>← PRÉCÉDENT</button>
+                <button class="nav-btn" id="nextBtn" onclick="nextQuestion()" disabled>SUIVANT →</button>
+            </div>
+
+
+
+            <div class="result-container" id="resultContainer">
+    <div class="sport-emoji" id="sportEmoji"></div>
+    <div class="result-sport" id="resultSport"></div>
+    <div class="result-description" id="resultDescription"></div>
+    
+    <!-- SECTION CLUBS -->
+    <div class="clubs-section" id="clubsSection">
+        <div class="clubs-title">🏆 TROUVE UN CLUB PRÈS DE CHEZ TOI</div>
+        <div class="clubs-description">
+            Clique ci-dessous pour découvrir les clubs de <span id="sportName"></span> dans ta région
+        </div>
+        <a id="clubsLink" href="#" target="_blank" class="clubs-btn">
+            VOIR LES CLUBS DISPONIBLES →
+        </a>
+    </div>
+    
+<button class="restart-btn" onclick="restartQuiz()">REFAIRE LE QUIZ</button>
+</div>  <!-- Fermeture de result-container -->
+        </div>  <!-- Fermeture de quiz-container -->
+    </div>  <!-- Fermeture de quiz-wrapper -->
+
+    <div class="footer-text">
+        <p class="footer-line1">BASKETBALL. HANDBALL. VOLLEYBALL.</p>
+        <p class="footer-line2">NO MATTER YOUR SPORT.</p>
+        <p class="footer-line3">WIN WITH US ON YOUR TEAM.</p>
+    </div>
+
+</div> <!-- Fermeture de cinquieme-page -->
+
+
+
+<script>
+var texteSouris = document.querySelector('.texte-souris');
+document.addEventListener('mousemove', function(e) {
+    texteSouris.style.left = (e.clientX + 20) + 'px';
+    texteSouris.style.top = (e.clientY + 20) + 'px';
+    texteSouris.classList.add('visible');
+});
+
+var legendsWrapper = document.querySelector('.legends-wrapper');
+var rectangle = document.querySelector('.rectangle-monte');
+var rectangleGris = document.querySelector('.rectangle-gris');
+var titreFond = document.querySelector('.titre-fond');
+var texteHautGauche = document.querySelector('.texte-haut-gauche');
+var menuHautDroit = document.querySelector('.menu-haut-droit');
+var sectionGuidance = document.querySelector('.section-guidance');
+var blocTexte = document.querySelector('.bloc-texte');
+var blocTexteBas = document.querySelector('.bloc-texte-bas');
+
+window.onscroll = function() {
+    var scroll = window.pageYOffset;
+    var documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var scrollPercent = (scroll / documentHeight) * 100;
+   
+    rectangle.style.height = (scrollPercent * 4.5) + 'vh';
+    rectangle.style.backgroundColor = 'black';
+
+    // Rectangle gris qui monte après 95% au lieu de 90%
+    if (scrollPercent > 95) {
+        var grisHeight = (scrollPercent - 95) * 20;
+        rectangleGris.style.height = grisHeight + 'vh';
+    } else {
+        rectangleGris.style.height = '0vh';
+    }
+    
+    // Gérer la vidéo selon la position du scroll
+    var videoElement = document.getElementById('resultVideo');
+    var resultContainer = document.getElementById('resultContainer');
+    
+    // Si on est sur la page de résultats ET que le quiz est terminé
+    if (scrollPercent >= 90 && resultContainer.classList.contains('show')) {
+        // Relancer la vidéo
+        if (videoElement.style.display === 'none') {
+            videoElement.style.display = 'block';
+            videoElement.play();
+        }
+        // Réafficher la flèche
+        document.getElementById('arrowBackBtn').classList.add('show');
+    } 
+    // Si on n'est plus sur la page de résultats
+    else if (scrollPercent < 90) {
+        // Arrêter la vidéo
+        if (videoElement.style.display === 'block') {
+            videoElement.pause();
+            videoElement.style.display = 'none';
+        }
+        // Cacher la flèche
+        document.getElementById('arrowBackBtn').classList.remove('show');
+    }
+   
+    var deplacement = scroll * 0.3;
+    titreFond.style.transform = 'translate(-50%, -50%) translateY(-' + deplacement + 'px)';
+    // ... reste du code
+    texteHautGauche.style.transform = 'translateY(-' + deplacement + 'px)';
+    menuHautDroit.style.transform = 'translateY(-' + deplacement + 'px)';
+    sectionGuidance.style.transform = 'translateY(-' + deplacement + 'px)';
+    legendsWrapper.style.transform = 'translateY(-' + deplacement + 'px)';
+   
+    if (scrollPercent > 0) {
+        var fadeOut2 = Math.min(1, scrollPercent / 5);
+        var opacity = 1 - fadeOut2;
+        texteHautGauche.style.opacity = opacity;
+        menuHautDroit.style.opacity = opacity;
+        sectionGuidance.style.opacity = opacity;
+        legendsWrapper.style.opacity = opacity;
+    } else {
+        texteHautGauche.style.opacity = 1;
+        menuHautDroit.style.opacity = 1;
+        sectionGuidance.style.opacity = 1;
+        legendsWrapper.style.opacity = 1;
+    }
+}
+
+
+// Animation aléatoire des rectangles - TOUJOURS 3 AFFICHÉS
+var legendBoxes = Array.from(document.querySelectorAll('.legend-box'));
+var visibleBoxes = [null, null, null]; // 3 positions
+
+// Cacher tous les rectangles au début
+legendBoxes.forEach(box => {
+    box.classList.add('hidden');
+    box.style.display = 'none';
+});
+
+function showBoxAtPosition(box, position) {
+    box.style.display = 'flex';
+    box.className = 'legend-box position-' + (position + 1) + ' visible';
+    visibleBoxes[position] = box;
+}
+
+function hideBoxAtPosition(position) {
+    var box = visibleBoxes[position];
+    if (box) {
+        box.classList.remove('visible');
+        box.classList.add('hidden');
+        setTimeout(function() {
+            box.style.display = 'none';
+        }, 600);
+        visibleBoxes[position] = null;
+    }
+}
+
+function replaceRandomBox() {
+    // Choisir une position aléatoire (0, 1, ou 2)
+    var position = Math.floor(Math.random() * 3);
+    
+    // Trouver les rectangles non affichés
+    var availableBoxes = legendBoxes.filter(box => !visibleBoxes.includes(box));
+    
+    if (availableBoxes.length > 0) {
+        // Faire disparaître l'ancien
+        hideBoxAtPosition(position);
+        
+        // Afficher le nouveau après un court délai
+        setTimeout(function() {
+            var randomBox = availableBoxes[Math.floor(Math.random() * availableBoxes.length)];
+            showBoxAtPosition(randomBox, position);
+        }, 700);
+    }
+}
+
+// Afficher les 3 premiers rectangles
+showBoxAtPosition(legendBoxes[0], 0);
+showBoxAtPosition(legendBoxes[1], 1);
+showBoxAtPosition(legendBoxes[2], 2);
+
+// Remplacer un rectangle toutes les 3 secondes
+setInterval(replaceRandomBox, 3000);
+// ===== QUIZ FUNCTIONALITY =====
+function startQuiz() {
+    // Afficher le loading
+    document.getElementById('loadingScreen').classList.add('show');
+    
+    // Attendre 2 secondes puis afficher le quiz
+    setTimeout(function() {
+        document.getElementById('loadingScreen').classList.remove('show');
+        document.getElementById('quizIntro').style.display = 'none';
+        document.getElementById('quizWrapper').classList.add('active');
+    }, 2000);
+}
+
+const questions = [
+    {
+        question: "Comment préfères-tu bouger et te déplacer ?",
+        options: [
+            { text: "A. Courir sur de longues distances avec endurance", sport: "football" },
+            { text: "B. Des sprints courts et explosifs avec sauts", sport: "basketball" },
+            { text: "C. Mouvements rapides avec coordination œil-main", sport: "handball" },
+            { text: "D. Contacts physiques intenses et puissants", sport: "nfl" }
+        ]
+    },
+    {
+        question: "Quelle partie de ton corps utilises-tu le mieux ?",
+        options: [
+            { text: "A. Mes pieds - je suis précis et technique", sport: "football" },
+            { text: "B. Mes mains - j'ai un excellent lancer", sport: "handball" },
+            { text: "C. Mes bras - je saute haut et tire bien", sport: "basketball" },
+            { text: "D. Tout mon corps - force et impact", sport: "nfl" }
+        ]
+    },
+    {
+        question: "Quelle taille d'équipe te convient le mieux ?",
+        options: [
+            { text: "A. Grande équipe (11 joueurs) - beaucoup d'espace", sport: "football" },
+            { text: "B. Équipe moyenne (7 joueurs) - équilibre parfait", sport: "handball" },
+            { text: "C. Petite équipe (5 joueurs) - chacun compte", sport: "basketball" },
+            { text: "D. Grande équipe (11 joueurs) - stratégie complexe", sport: "nfl" }
+        ]
+    },
+    {
+        question: "Quel type de contact physique acceptes-tu ?",
+        options: [
+            { text: "A. Minimal - pas de contact autorisé", sport: "volleyball" },
+            { text: "B. Modéré - contacts légers et accidentels", sport: "football" },
+            { text: "C. Important - bousculades et accrochages fréquents", sport: "handball" },
+            { text: "D. Très intense - collisions et plaquages", sport: "nfl" }
+        ]
+    },
+    {
+        question: "Quel rythme de jeu te correspond ?",
+        options: [
+            { text: "A. Continue pendant 90 minutes avec peu d'arrêts", sport: "football" },
+            { text: "B. Rapide et dynamique avec beaucoup d'actions", sport: "handball" },
+            { text: "C. Très rapide avec montées et descentes constantes", sport: "basketball" },
+            { text: "D. Séquences courtes et intenses avec pauses stratégiques", sport: "nfl" }
+        ]
+    },
+    {
+        question: "Quelle qualité physique est ta plus grande force ?",
+        options: [
+            { text: "A. Endurance - je peux courir longtemps", sport: "football" },
+            { text: "B. Agilité - je change vite de direction", sport: "handball" },
+            { text: "C. Détente verticale - je saute très haut", sport: "basketball" },
+            { text: "D. Puissance pure - je suis très fort", sport: "nfl" }
+        ]
+    },
+    {
+        question: "Quel type de terrain préfères-tu ?",
+        options: [
+            { text: "A. Grand terrain extérieur en gazon", sport: "football" },
+            { text: "B. Salle couverte de taille moyenne", sport: "handball" },
+            { text: "C. Petit terrain en salle avec parquet", sport: "basketball" },
+            { text: "D. Terrain synthétique avec marquages complexes", sport: "nfl" }
+        ]
+    },
+    {
+        question: "Comment aimes-tu marquer des points ?",
+        options: [
+            { text: "A. Tirer au but avec mes pieds - c'est rare mais magnifique", sport: "football" },
+            { text: "B. Lancer en sautant vers le but adverse", sport: "handball" },
+            { text: "C. Shooter dans un panier en hauteur", sport: "basketball" },
+            { text: "D. Porter ou lancer le ballon dans la zone d'en-but", sport: "nfl" }
+        ]
+    }
+];
+
+const sports = {
+    football: {
+        name: "FOOTBALL",
+        emoji: "⚽",
+        description: "Tu es fait pour le football ! Ton esprit d'équipe, ton endurance et ta passion pour le beau jeu font de toi un footballeur né. Rejoins les légendes sur les terrains du monde entier."
+    },
+    basketball: {
+        name: "BASKETBALL",
+        emoji: "🏀",
+        description: "Le basketball est ton sport ! Ta vitesse, ton explosivité et ton talent pour marquer font de toi un basketteur d'exception. Vise les paniers et entre dans la légende NBA."
+    },
+    f1: {
+        name: "FORMULE 1",
+        emoji: "🏎️",
+        description: "La Formule 1 t'appelle ! Ton sang-froid, ta précision et ton besoin de vitesse font de toi un pilote d'exception. Prépare-toi à conquérir les circuits du monde."
+    },
+    nfl: {
+        name: "NFL",
+        emoji: "🏈",
+        description: "La NFL est faite pour toi ! Ta puissance, ton courage et ton esprit stratégique font de toi un joueur de football américain redoutable. Prêt à dominer le terrain ?"
+    },
+    handball: {
+        name: "HANDBALL",
+        emoji: "🤾",
+        description: "Le handball est ton terrain de jeu ! Ta coordination, ton intelligence de jeu et ton esprit collectif font de toi un handballeur d'élite. Mène ton équipe vers la victoire !"
+    },
+    volleyball: {
+        name: "VOLLEYBALL",
+        emoji: "🏐",
+        description: "Le volleyball est ton sport idéal ! Ta précision, ton agilité et ta capacité à lire le jeu font de toi un volleyeur exceptionnel. Frappe fort et vise le sommet !"
+    }
+};
+
+let currentQuestion = 0;
+let answers = {};
+let sportScores = {
+    football: 0,
+    basketball: 0,
+    f1: 0,
+    nfl: 0,
+    handball: 0,
+    volleyball: 0
+};
+
+function displayQuestion() {
+    const container = document.getElementById('questionContainer');
+    const question = questions[currentQuestion];
+    
+    let html = `<div class="question-number">QUESTION ${currentQuestion + 1} / ${questions.length}</div>`;
+    html += `<div class="question-text">${question.question}</div>`;
+    html += '<div class="options-grid">';
+    
+    question.options.forEach((option, index) => {
+        const selected = answers[currentQuestion] === index ? 'selected' : '';
+        html += `<button class="option-btn ${selected}" onclick="selectOption(${index})">${option.text}</button>`;
+    });
+    
+    html += '</div>';
+    container.innerHTML = html;
+    
+    updateProgress();
+    updateButtons();
+}
+
+function selectOption(optionIndex) {
+    answers[currentQuestion] = optionIndex;
+    displayQuestion();
+    document.getElementById('nextBtn').disabled = false;
+}
+
+function updateProgress() {
+    const dots = document.querySelectorAll('.progress-dot');
+    dots.forEach((dot, index) => {
+        dot.classList.remove('active', 'completed');
+        if (index < currentQuestion) {
+            dot.classList.add('completed');
+        } else if (index === currentQuestion) {
+            dot.classList.add('active');
+        }
+    });
+}
+
+function updateButtons() {
+    document.getElementById('prevBtn').disabled = currentQuestion === 0;
+    document.getElementById('nextBtn').disabled = answers[currentQuestion] === undefined;
+}
+
+function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        displayQuestion();
+    } else {
+        showResults();
+    }
+}
+
+function previousQuestion() {
+    if (currentQuestion > 0) {
+        currentQuestion--;
+        displayQuestion();
+    }
+}
+
+function showResults() {
+    // Réinitialiser les scores
+    sportScores = {
+        football: 0,
+        basketball: 0,
+        f1: 0,
+        nfl: 0,
+        handball: 0,
+        volleyball: 0
+    };
+    
+    // 1. Calculer les scores
+    Object.keys(answers).forEach(questionIndex => {
+        const optionIndex = answers[questionIndex];
+        const sport = questions[questionIndex].options[optionIndex].sport;
+        sportScores[sport]++;
+    });
+    
+    // 2. Trouver le sport gagnant
+    let maxScore = 0;
+    let winningSport = '';
+    Object.keys(sportScores).forEach(sport => {
+        if (sportScores[sport] > maxScore) {
+            maxScore = sportScores[sport];
+            winningSport = sport;
+        }
+    });
+    
+    // 3. Définir les liens des clubs
+    const clubLinks = {
+        football: {
+            name: "Football",
+            url: "https://www.fff.fr/trouver_club"
+        },
+        basketball: {
+            name: "Basketball",
+            url: "https://www.ffbb.com/trouver"
+        },
+        f1: {
+    name: "Sports Mécaniques",
+    url: "https://www.rkc.fr/"  // ← CHANGE ICI
+},
+        nfl: {
+            name: "Football Américain",
+            url: "https://l2fa.fr/index.php/les-clubs-de-football-americain-affilies/"
+        },
+        handball: {
+            name: "Handball",
+            url: "https://monclub.ffhandball.fr/"
+        },
+        volleyball: {
+            name: "Volleyball",
+            url: "http://www.ffvb.org/pratiquer/ou-pratiquer/"
+        }
+    };
+    
+    // 4. Mettre à jour le lien du club
+    const sportData = clubLinks[winningSport];
+    document.getElementById('sportName').textContent = sportData.name;
+    document.getElementById('clubsLink').href = sportData.url;
+    
+    // 5. Définir la vidéo selon le sport
+const sportVideos = {
+    football: "football.mp4",
+    basketball: "basketball.mp4",
+    f1: "f1.mp4", 
+    nfl: "NFL.MP4",
+    handball: "handball.MP4",
+    volleyball: "volleyball.MP4"
+};
+
+// Mettre à jour la vidéo
+const videoElement = document.getElementById('resultVideo');
+videoElement.src = sportVideos[winningSport];
+videoElement.style.display = 'block';
+    
+    // Afficher les résultats
+    document.getElementById('questionContainer').style.display = 'none';
+    document.querySelector('.quiz-nav').style.display = 'none';
+    document.getElementById('quizProgress').style.display = 'none';
+    
+    const resultContainer = document.getElementById('resultContainer');
+    document.getElementById('sportEmoji').textContent = sports[winningSport].emoji;
+    document.getElementById('resultSport').textContent = sports[winningSport].name;
+    document.getElementById('resultDescription').textContent = sports[winningSport].description;
+    resultContainer.classList.add('show');
+        // Afficher la flèche de retour ← AJOUTE CES 2 LIGNES ICI
+    document.getElementById('arrowBackBtn').classList.add('show');
+}
+
+
+
+function restartQuiz() {
+    currentQuestion = 0;
+    answers = {};
+    sportScores = {
+        football: 0,
+        basketball: 0,
+        f1: 0,
+        nfl: 0,
+        handball: 0,
+        volleyball: 0
+    };
+    
+    // AJOUTE CES 2 LIGNES
+    document.getElementById('resultVideo').style.display = 'none';
+    document.getElementById('resultVideo').pause();
+    
+    document.getElementById('questionContainer').style.display = 'block';
+    document.querySelector('.quiz-nav').style.display = 'flex';
+    document.getElementById('quizProgress').style.display = 'flex';
+    document.getElementById('resultContainer').classList.remove('show');
+    
+    displayQuestion();
+    // Cacher la flèche
+document.getElementById('arrowBackBtn').classList.remove('show');
+}
+// Initialize quiz when wrapper becomes visible
+displayQuestion();
+function scrollToTop() {
+    // Arrêter et cacher la vidéo
+    const videoElement = document.getElementById('resultVideo');
+    videoElement.pause();
+    videoElement.currentTime = 0; // Remettre à zéro
+    videoElement.style.display = 'none';
+    
+    // Scroll vers le haut
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    
+    // Cacher la flèche après le scroll
+    setTimeout(function() {
+        document.getElementById('arrowBackBtn').classList.remove('show');
+    }, 1000);
+}
+</script>
+    
+ </body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ventures - PULSE |TO BE ATHLETE OWN YOUR GAME</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            min-height: 100vh;
+        }
+        
+        .menu-haut-droit {
+            position: fixed;
+            top: 30px;
+            right: 50px;
+            display: flex;
+            gap: 30px;
+            z-index: 1000;
+        }
+        
+        .menu-haut-droit a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 11px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid #fff;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        .menu-haut-droit a:hover {
+            opacity: 0.5;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 60px 80px;
+        }
+        
+        h1 {
+            font-size: 96px;
+            font-weight: 900;
+            margin: 0 0 80px 0;
+            letter-spacing: -4px;
+            text-transform: uppercase;
+        }
+        
+        .ventures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .venture-item {
+            border: 3px solid #fff;
+            padding: 60px 50px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .venture-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            transition: left 0.4s ease;
+            z-index: 0;
+        }
+        
+        .venture-item:hover::before {
+            left: 0;
+        }
+        
+        .venture-item:hover {
+            border-color: #FFD700;
+        }
+        
+        .venture-item:hover h2,
+        .venture-item:hover p,
+        .venture-item:hover .venture-number {
+            color: #000;
+        }
+        
+        .venture-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .venture-number {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            color: #FFD700;
+            transition: color 0.4s ease;
+        }
+        
+        .venture-item h2 {
+            font-size: 36px;
+            font-weight: 900;
+            margin: 0 0 20px 0;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            transition: color 0.4s ease;
+        }
+        
+        .venture-item p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin: 0;
+            letter-spacing: 0.5px;
+            transition: color 0.4s ease;
+        }
+        
+        .cta-section {
+            margin-top: 100px;
+            padding: 80px 60px;
+            border: 3px solid #FFD700;
+            text-align: center;
+            background: rgba(255, 215, 0, 0.05);
+        }
+        
+        .cta-section h2 {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 0 0 30px 0;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+        }
+        
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 40px;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: #FFD700;
+            color: #000;
+            padding: 20px 60px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 3px solid #FFD700;
+        }
+        
+        .cta-btn:hover {
+            background: transparent;
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 1024px) {
+            .ventures-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 72px;
+            }
+            
+            .venture-item h2 {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-haut-droit {
+                right: 20px;
+                top: 20px;
+                gap: 20px;
+            }
+            
+            .menu-haut-droit a {
+                font-size: 10px;
+            }
+            
+            .container {
+                padding: 80px 25px 60px;
+            }
+            
+            h1 {
+                font-size: 56px;
+            }
+            
+            .venture-item {
+                padding: 40px 30px;
+            }
+            
+            .venture-item h2 {
+                font-size: 28px;
+            }
+            
+            .cta-section {
+                padding: 50px 30px;
+            }
+            
+            .cta-section h2 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="menu-haut-droit">
+        <a href="manifesto.html">OUR MANIFESTO</a>
+        <a href="Mon image.htm">HOME</a>
+        <a href="storefront.html">STOREFRONT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
+    
+    <div class="container">
+        <h1>VENTURES</h1>
+        
+        <div class="ventures-grid">
+            <div class="venture-item">
+                <div class="venture-content">
+                    <div class="venture-number">01</div>
+                    <h2>ATHLETE MANAGEMENT</h2>
+                    <p>Comprehensive career guidance from former players who understand the game inside and out. We handle contracts, negotiations, and strategic planning so you can focus on your performance.</p>
+                </div>
+            </div>
+            
+            <div class="venture-item">
+                <div class="venture-content">
+                    <div class="venture-number">02</div>
+                    <h2>BRAND DEVELOPMENT</h2>
+                    <p>Build your personal brand beyond the field. From social media strategy to endorsement deals, we help you create a lasting legacy that extends far beyond your playing career.</p>
+                </div>
+            </div>
+            
+            <div class="venture-item">
+                <div class="venture-content">
+                    <div class="venture-number">03</div>
+                    <h2>TRAINING PROGRAMS</h2>
+                    <p>Elite training with world-class coaches who have been where you are. Customized programs designed to maximize your potential and keep you at peak performance.</p>
+                </div>
+            </div>
+            
+            <div class="venture-item">
+                <div class="venture-content">
+                    <div class="venture-number">04</div>
+                    <h2>FINANCIAL PLANNING</h2>
+                    <p>Smart financial strategies for athletes at every stage. We help you protect your earnings, invest wisely, and build wealth that lasts beyond your playing days.</p>
+                </div>
+            </div>
+            
+            <div class="venture-item">
+                <div class="venture-content">
+                    <div class="venture-number">05</div>
+                    <h2>POST-CAREER TRANSITION</h2>
+                    <p>Preparing for life after sports. Whether it's coaching, broadcasting, business ventures, or new career paths, we guide you through every step of your transition.</p>
+                </div>
+            </div>
+            
+            <div class="venture-item">
+                <div class="venture-content">
+                    <div class="venture-number">06</div>
+                    <h2>LEGAL SUPPORT</h2>
+                    <p>Expert legal counsel specialized in sports law. From contract reviews to dispute resolution, we protect your interests with experienced professionals who know the industry.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>READY TO ELEVATE YOUR GAME?</h2>
+            <p>Join athletes who chose to own their careers. Let's build your legacy together.</p>
+            <a href="contact.html" class="cta-btn">GET STARTED</a>
+        </div>
+    </div>
+</body>
+</html>

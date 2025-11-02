@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Product - PULSE | TO BE ATHLETE OWN YOUR GAME</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #000;
+            font-family: 'JetBrains Mono', monospace;
+            min-height: 100vh;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-bottom: 2px solid #000;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .header-right a {
+            color: #000;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: red;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        
+        .breadcrumb {
+            padding: 100px 50px 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: #000;
+        }
+        
+        .product-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 50px 80px;
+            gap: 80px;
+        }
+        
+        .product-image {
+            flex: 1;
+            background: #f5f5f5;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+        }
+        
+        .product-details {
+            flex: 1;
+            padding-top: 40px;
+        }
+        
+        .product-title {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 0 0 20px 0;
+            letter-spacing: -2px;
+        }
+        
+        .product-description {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .product-price {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 40px;
+        }
+        
+        .product-option {
+            margin-bottom: 30px;
+        }
+        
+        .product-option label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .product-option select {
+            width: 100%;
+            padding: 15px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            border: 2px solid #000;
+            background: #fff;
+            cursor: pointer;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .quantity-selector label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .quantity-input {
+            width: 80px;
+            padding: 12px;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            border: 2px solid #000;
+        }
+        
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 20px;
+            background: #00D9FF;
+            color: #000;
+            border: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-to-cart-btn:hover {
+            background: #00B8D4;
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background: #2a2a2a;
+            color: #fff;
+            padding: 40px 50px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+                padding: 20px 25px 60px;
+            }
+            
+            .product-image {
+                padding: 40px;
+            }
+            
+            .product-title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo" onclick="window.location.href='storefront.html'">🅿 PULSE</div>
+        <div class="header-right">
+            <a href="storefront.html">Log In</a>
+            <div class="cart-icon" onclick="window.location.href='cart.html'">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="breadcrumb">
+        <a href="storefront.html">Home</a> > <span id="breadcrumbProduct">Product</span>
+    </div>
+    
+    <div class="product-container">
+        <div class="product-image">
+            <img src="" alt="" id="productImage">
+        </div>
+        
+        <div class="product-details">
+            <h1 class="product-title" id="productTitle">Loading...</h1>
+            <p class="product-description" id="productDescription"></p>
+            <div class="product-price" id="productPrice">$0.00</div>
+            
+            <div class="product-option" id="sizeSection">
+                <label for="size">Size</label>
+                <select id="size">
+                    <option>Size S (1 in stock)</option>
+                    <option>Size M (3 in stock)</option>
+                    <option>Size L (5 in stock)</option>
+                    <option>Size XL (2 in stock)</option>
+                </select>
+            </div>
+            
+            <div class="quantity-selector">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" class="quantity-input" value="1" min="1" max="10">
+            </div>
+            
+            <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <div class="footer-links">
+            <a href="#">SUPPORT</a>
+            <span>//</span>
+            <a href="#">PRIVACY</a>
+            <span>//</span>
+            <a href="#">TERMS</a>
+        </div>
+    </div>
+    
+    <script>
+        const products = {
+            'core-hoodie': {
+                name: 'The Core Hoodie',
+                price: 125.00,
+                image: 'pull 2.png',
+                description: 'Premium quality hoodie designed for athletes. Features dropped shoulders, kangaroo pocket, and ultra-soft fleece interior. Perfect for training or casual wear.',
+                hasSize: true
+            },
+            'bracelet': {
+                name: 'PULSE Bracelet',
+                price: 45.00,
+                image: 'bracelet 1.jpg',
+                description: 'Handcrafted performance bracelet. Made with durable materials and featuring the iconic PULSE logo. Adjustable fit for maximum comfort during any activity.',
+                hasSize: false
+            },
+            'gourde': {
+                name: 'The Flow Flask',
+                price: 54.00,
+                image: 'gourde.png',
+                description: 'Stay hydrated in style. This insulated water bottle keeps drinks cold for 24 hours or hot for 12 hours. Leak-proof design with easy-grip finish.',
+                hasSize: false
+            },
+            'cap-classic': {
+                name: 'PULSE Cap Classic',
+                price: 35.00,
+                image: 'casquette 1.png',
+                description: 'Classic snapback cap with embroidered PULSE logo. Adjustable back strap and curved brim. Perfect for any occasion, on or off the field.',
+                hasSize: false
+            },
+            'cap-premium': {
+                name: 'PULSE Cap Premium',
+                price: 45.00,
+                image: 'casquette 2.png',
+                description: 'Elevated design with premium materials. Features moisture-wicking sweatband and structured fit. The ultimate statement piece for athletes.',
+                hasSize: false
+            },
+            'tee': {
+                name: 'The Off-Duty Tee',
+                price: 55.00,
+                image: 't-shirt 1.png',
+                description: 'Soft, breathable cotton tee with a relaxed fit. Screen-printed PULSE branding. Your go-to shirt for rest days and everything in between.',
+                hasSize: true
+            }
+        };
+        
+        function getCart() {
+            const cartData = sessionStorage.getItem('pulseCart');
+            return cartData ? JSON.parse(cartData) : [];
+        }
+        
+        function saveCart(cart) {
+            sessionStorage.setItem('pulseCart', JSON.stringify(cart));
+        }
+        
+        let cart = getCart();
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+        
+        function loadProduct() {
+            if (productId && products[productId]) {
+                const product = products[productId];
+                
+                document.title = product.name + ' - PULSE';
+                document.getElementById('productTitle').textContent = product.name;
+                document.getElementById('productDescription').textContent = product.description;
+                document.getElementById('productPrice').textContent = '$' + product.price.toFixed(2);
+                document.getElementById('productImage').src = product.image;
+                document.getElementById('productImage').alt = product.name;
+                document.getElementById('breadcrumbProduct').textContent = product.name;
+                
+                if (!product.hasSize) {
+                    document.getElementById('sizeSection').style.display = 'none';
+                }
+            } else {
+                alert('Product not found!');
+                window.location.href = 'storefront.html';
+            }
+        }
+        
+        function addToCart() {
+            if (!productId || !products[productId]) return;
+            
+            const product = products[productId];
+            const quantity = parseInt(document.getElementById('quantity').value);
+            
+            let size = 'One Size';
+            if (product.hasSize) {
+                size = document.getElementById('size').value;
+            }
+            
+            const cartItem = {
+                id: productId,
+                name: product.name,
+                price: product.price,
+                size: size,
+                quantity: quantity,
+                image: product.image
+            };
+            
+            cart.push(cartItem);
+            saveCart(cart);
+            updateCartCount();
+            
+            alert('Product added to cart!');
+            
+            setTimeout(() => {
+                window.location.href = 'cart.html';
+            }, 1000);
+        }
+        
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+        }
+        
+        loadProduct();
+        updateCartCount();
+    </script>
+</body>
+</html>
